@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read and write reviews for books you've read in the 'Reviews' page. Share your thoughts and help others find their next book.">
+    <meta name="author" content="David da Rocha Fernandes">
+
+    <!-- Facebook Open Graph Meta Tags -->
+    <meta property="og:title" content="BookHaven">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://davidfernandes03.github.io/wdd231/project/images/logo-property.png">
+    <meta property="og:url" content="https://davidfernandes03.github.io/wdd231/project/reviews.html">
+
+    <title>Reviews - BookHaven</title>
+
+    <!-- API Google Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/icon-bh.avif" type="image/x-icon">
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="css/bookhaven.css">
+    <link rel="stylesheet" href="css/bookhaven-large.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.avif" alt="BookHaven Logo">
+            <h1>BookHaven</h1>
+            <button id="hamburger" aria-label="Open navigation menu"></button>
+        </div>
+    </header>
+
+    <nav id="animation">
+        <ul class="menuLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="books.html">Books</a></li>
+            <li class="active"><a href="reviews.html">Reviews</a></li>
+            <li><a href="join.html">Join</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="review-form-section">
+            <h2>✍️ Write a Review ✍️</h2>
+            <form id="review-form">
+                <input type="text" id="review-title" placeholder="Book Title" required>
+                <textarea id="review-content" placeholder="Write your review here..." required></textarea>
+                <button type="submit" id="submit-review">Submit Review</button>
+            </form>
+        </section>
+
+        <section class="review-list-section">
+            <h2>📝 Reviews 📝</h2>
+            <ul id="review-card">
+                <!-- Reviews will be dynamically added here -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>David Fernandes</p>
+        <p class="first-line">&copy;<span id="current-year"></span> BookHaven</p>
+        <p id="lastModified" class="second-line"></p>
+    </footer>
+
+    <script src="js/general.js" defer></script>
+    <script src="js/reviews.js" defer></script>
+</body>
+</html>

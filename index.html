@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="David da Rocha Fernandes">
+
+    <!-- Facebook Open Graph Meta Tags -->
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+
+    <title>PokeIndex</title>
+
+    <!-- API Google Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/icon-bh.avif" type="image/x-icon">
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="css/bookhaven.css">
+    <link rel="stylesheet" href="css/bookhaven-large.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo/pokeball.png" alt="BookHaven Logo">
+            <h1>PokeIndex</h1>
+            <button id="hamburger" aria-label="Open navigation menu"></button>
+        </div>
+    </header>
+
+    <nav id="animation">
+        <ul class="menuLinks">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="pokemon.html">Pokémon</a></li>
+            <li><a href="comparison.html">Compare</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="trivia.html">Trivia</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h2>Welcome to PokeIndex</h2>
+            <p>Explore the vast world of Pokémon! Discover stats, abilities, evolutions, and more.</p>
+        </section>
+
+        <!-- Search Bar -->
+        <section class="search">
+            <input type="text" id="search-input" placeholder="Search for Pokémon or an element...">
+            <button id="search-btn">Search</button>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="introduction">
+            <h2>What is PokeIndex?</h2>
+            <p>PokeIndex is the ultimate Pokémon database for fans and trainers! Whether you're a newcomer or a seasoned expert, you can:</p>
+            <ul>
+                <li>🔎 Search Pokémons and learn about their abilities, evolutions, and stats.</li>
+                <li class="zebra">⚔️ Compare Pokémon to see which ones are the best for battles.</li>
+                <li>🧭 Explore a visual gallery filled with Pokémon images and animations.</li>
+                <li class="zebra">🤓 Test your knowledge with fun Pokémon trivia!</li>
+            </ul>
+            
+            <p class="ppp"><strong>Get ready to catch 'em all!</strong></p>
+        </section>
+
+        <!-- Featured Books -->
+        <section class="featured">
+            <h2>🔥 Featured Pokémon 🔥</h2>
+            <div class="carousel">
+                <button id="prevBtn">◀</button>
+                <div class="carousel-container" id="pokemon-list"></div>
+                <button id="nextBtn">▶</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>David Fernandes</p>
+        <p class="first-line">&copy;<span id="current-year"></span> PokeIndex</p>
+        <p id="lastModified" class="second-line"></p>
+    </footer>
+
+    <script src="js/general.js" defer></script>
+    <script type="module" src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+@media (min-width: 640px) {
+    body {
+        background: url('../images/wallpaper/poke-wpp1.avif') no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    /* Header and Nav */
+    h1 {
+        font-size: 2rem;
+        margin-left: 5px;
+    }
+
+    #hamburger {
+        display: none;
+    }
+
+    nav ul.menuLinks, nav ul.menuLinks.open {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    ul.menuLinks a:hover {
+        background-color: var(--nav-hover);
+        color: var(--background-color);
+    }
+
+    #animation {
+        grid-template-rows: 1fr;
+    }
+
+    .search, .books-search {
+        flex-direction: row;
+        margin: 30px 0px;
+    }
+
+    #search-input, #search-input-books {
+        border: 2px solid rgba(0, 0, 0, 0.5);
+        border-radius: 5px 0px 0px 5px;
+    }
+
+    #search-btn, #search-btn-books {
+        margin: 0px;
+        border: 2px solid rgba(0, 0, 0, 0);
+        border-left: none;
+        border-radius: 0px 5px 5px 0px;
+    }
+
+    #review-form {
+        min-width: 500px;
+    }
+
+    .card-reviews {
+        flex-direction: row;
+        align-items: center;
+        padding: 1rem 1.5rem;
+    }
+
+    .title-content {
+        flex: 1;
+        text-align: start;
+        margin-right: 40px;
+        word-break: break-word;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+/* Exclusive for Home Page */
+@media (max-width: 1257px) {
+    .carousel-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    #prevBtn, #nextBtn {
+        display: none;
+    }
+}
+
+@media (max-width: 820px) {
+    .carousel-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 540px) {
+    .carousel-container {
+        grid-template-columns: 1fr;
+    }
+
+    .carousel {
+        display: block;
+    }
+
+    .pokemon {
+        max-width: 300px;
+        width: 300px;
+        margin: 10px auto;
+    }
+
+    .pokemon img {
+        height: 250px;
+    }
+}

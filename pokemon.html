@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The 'Books' page allows you browsing through a collection of books, search by title or author, and discover your next great read.">
+    <meta name="author" content="David da Rocha Fernandes">
+
+    <!-- Facebook Open Graph Meta Tags -->
+    <meta property="og:title" content="BookHaven">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://davidfernandes03.github.io/wdd231/project/images/logo-property.png">
+    <meta property="og:url" content="https://davidfernandes03.github.io/wdd231/project/books.html">
+
+    <title>Books - BookHaven</title>
+
+    <!-- API Google Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/icon-bh.avif" type="image/x-icon">
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="css/bookhaven.css">
+    <link rel="stylesheet" href="css/bookhaven-large.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.avif" alt="BookHaven Logo">
+            <h1>BookHaven</h1>
+            <button id="hamburger" aria-label="Open navigation menu"></button>
+        </div>
+    </header>
+
+    <nav id="animation">
+        <ul class="menuLinks">
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="pokemon.html">Books</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="join.html">Join</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Title Page -->
+        <section class="books-header">
+            <h2>📚 Explore Our Collection 📚</h2>
+            <p>Search and discover amazing books in our collection.</p>
+        </section>
+
+        <!-- Search Bar -->
+        <section class="books-search">
+            <input type="text" id="search-input-books" placeholder="Search for books...">
+            <button id="search-btn-books">Search</button>
+        </section>
+
+        <!-- Books List -->
+        <section class="books-list">
+            <h2>🔎 Search Results 🔎</h2>
+            <div class="carousel">
+                <button id="prevBtn">◀</button>
+                <div class="carousel-container" id="books-container"></div>
+                <button id="nextBtn">▶</button>
+            </div>
+        </section>
+
+        <!-- Modals -->
+        <dialog id="book-modal-books" class="modal">
+            <div class="modal-content">
+                <h2 id="modal-title-books"></h2>
+                <p id="modal-description-books"></p>
+                <a id="modal-link-books" href="#" target="_blank">More Info</a>
+            </div>
+            <button class="close-modal">Close</button>
+        </dialog>
+    </main>
+
+    <footer>
+        <p>David Fernandes</p>
+        <p class="first-line">&copy;<span id="current-year"></span> BookHaven</p>
+        <p id="lastModified" class="second-line"></p>
+    </footer>
+
+    <script src="js/general.js" defer></script>
+    <script type="module" src="js/books.js"></script>
+</body>
+</html>
