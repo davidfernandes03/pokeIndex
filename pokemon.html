@@ -3,35 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The 'Books' page allows you browsing through a collection of books, search by title or author, and discover your next great read.">
+    <meta name="description" content="">
     <meta name="author" content="David da Rocha Fernandes">
 
-    <!-- Facebook Open Graph Meta Tags -->
-    <meta property="og:title" content="BookHaven">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://davidfernandes03.github.io/wdd231/project/images/logo-property.png">
-    <meta property="og:url" content="https://davidfernandes03.github.io/wdd231/project/books.html">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
 
-    <title>Books - BookHaven</title>
+    <title>PokeIndex - Pokemons</title>
 
     <!-- API Google Fonts -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" href="images/icon-bh.avif" type="image/x-icon">
 
     <!-- CSS Link -->
-    <link rel="stylesheet" href="css/bookhaven.css">
-    <link rel="stylesheet" href="css/bookhaven-large.css">
+    <link rel="stylesheet" href="css/poke-index.css">
+    <link rel="stylesheet" href="css/poke-index-large.css">
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="images/logo.avif" alt="BookHaven Logo">
-            <h1>BookHaven</h1>
+            <img src="images/logo/pokeball.png" alt="PokeBall Logo">
+            <h1>PokeIndex</h1>
             <button id="hamburger" aria-label="Open navigation menu"></button>
         </div>
     </header>
@@ -39,41 +38,100 @@
     <nav id="animation">
         <ul class="menuLinks">
             <li><a href="index.html">Home</a></li>
-            <li class="active"><a href="pokemon.html">Books</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-            <li><a href="join.html">Join</a></li>
+            <li class="active"><a href="pokemon.html">Pokémon</a></li>
+            <li><a href="comparison.html">Compare</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="trivia.html">Trivia</a></li>
         </ul>
     </nav>
 
     <main>
         <!-- Title Page -->
-        <section class="books-header">
-            <h2>📚 Explore Our Collection 📚</h2>
-            <p>Search and discover amazing books in our collection.</p>
+        <section class="hero">
+            <h2>Pokémon Encyclopedia</h2>
+            <p>Search, filter, and explore all Pokémon by type, generation, and name.</p>
         </section>
-
+    
         <!-- Search Bar -->
-        <section class="books-search">
-            <input type="text" id="search-input-books" placeholder="Search for books...">
-            <button id="search-btn-books">Search</button>
+        <section class="search">
+            <input type="text" id="search-input" placeholder="Search for Pokémon...">
+            <button id="search-btn">Search</button>
         </section>
-
-        <!-- Books List -->
-        <section class="books-list">
+    
+        <!-- Filter Options -->
+        <section class="filters">
+            <div class="filter-flex">
+                <label for="filter-type">Filter by Type:</label>
+                <select id="filter-type">
+                    <option value="">All Types</option>
+                    <option value="fire">🔥 Fire</option>
+                    <option value="water">💧 Water</option>
+                    <option value="electric">⚡ Electric</option>
+                    <option value="grass">🌿 Grass</option>
+                    <option value="ice">❄ Ice</option>
+                    <option value="fighting">🥊 Fighting</option>
+                    <option value="poison">☠️ Poison</option>
+                    <option value="ground">🌍 Ground</option>
+                    <option value="flying">🌬️ Flying</option>
+                    <option value="psychic">🧠 Psychic</option>
+                    <option value="bug">🐛 Bug</option>
+                    <option value="rock">🪨 Rock</option>
+                    <option value="ghost">👻 Ghost</option>
+                    <option value="dragon">🐉 Dragon</option>
+                    <option value="dark">🌑 Dark</option>
+                    <option value="steel">⚙ Steel</option>
+                    <option value="fairy">✨ Fairy</option>
+                </select>
+            </div>
+            <div class="filter-flex">
+                <label for="filter-generation">Filter by Generation:</label>
+                <select id="filter-generation">
+                    <option value="">All Generations</option>
+                    <option value="1">Gen I</option>
+                    <option value="2">Gen II</option>
+                    <option value="3">Gen III</option>
+                    <option value="4">Gen IV</option>
+                    <option value="5">Gen V</option>
+                    <option value="6">Gen VI</option>
+                    <option value="7">Gen VII</option>
+                    <option value="8">Gen VIII</option>
+                    <option value="9">Gen IX</option>
+                </select>
+            </div>
+        </section>
+    
+        <!-- Pokémon List -->
+        <section class="featured">
             <h2>🔎 Search Results 🔎</h2>
             <div class="carousel">
                 <button id="prevBtn">◀</button>
-                <div class="carousel-container" id="books-container"></div>
+                <div class="carousel-container" id="pokemon-list"></div>
                 <button id="nextBtn">▶</button>
             </div>
         </section>
-
-        <!-- Modals -->
-        <dialog id="book-modal-books" class="modal">
+    
+        <!-- Modal -->
+        <dialog id="pokemon-modal" class="modal">
             <div class="modal-content">
-                <h2 id="modal-title-books"></h2>
-                <p id="modal-description-books"></p>
-                <a id="modal-link-books" href="#" target="_blank">More Info</a>
+                <div class="division-1">
+                    <img id="modal-image" src="" alt="Pokemon Image" />
+                    <div>
+                        <h2 id="modal-title"></h2>
+                        <p id="modal-types"></p>
+                        <p id="modal-height-weight"></p>
+                        <p id="modal-generation"></p>
+                        <p id="modal-habitat"></p>
+                        <p id="modal-legendary"></p>
+                        <p id="modal-abilities"></p>
+                    </div>
+                </div>
+                <div class="division-2">
+                    <div class="description-div">
+                        <h3>Description:</h3>
+                        <p id="modal-description"></p>
+                    </div>
+                    <div id="modal-stats"></div>
+                </div> 
             </div>
             <button class="close-modal">Close</button>
         </dialog>
@@ -81,11 +139,11 @@
 
     <footer>
         <p>David Fernandes</p>
-        <p class="first-line">&copy;<span id="current-year"></span> BookHaven</p>
+        <p class="first-line">&copy;<span id="current-year"></span> PokeIndex</p>
         <p id="lastModified" class="second-line"></p>
     </footer>
 
     <script src="js/general.js" defer></script>
-    <script type="module" src="js/books.js"></script>
+    <script type="module" src="js/pokemon.js"></script>
 </body>
 </html>

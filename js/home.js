@@ -1,7 +1,8 @@
-import { fetchPokemon, fetchRandomPokemon } from "./api.js";
+import { fetchRandomPokemon } from "./api.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    fetchRandomPokemon(10).then(displayPokemon)
+    fetchRandomPokemon(10).then(displayPokemon);
+    setupSearch();
 });
 
 function displayPokemon(pokemonList) {
@@ -9,7 +10,7 @@ function displayPokemon(pokemonList) {
     pokemonContainer.innerHTML = "";
 
     pokemonList.forEach(pokemon => {
-        const { name, id, sprites, types } = pokemon;
+        const { name, sprites, types } = pokemon;
         const imageUrl = sprites.other["official-artwork"].front_default || "images/no-image.avif";
         const typeNames = types.map(t => t.type.name).join(", ");
 
@@ -39,9 +40,21 @@ function setupCarousel() {
     });
 }
 
-document.getElementById("search-btn").addEventListener("click", () => {
-    const query = document.getElementById("search-input").value.trim();
-    if (query) {
-        window.location.href = `pokemon.html?search=${encodeURIComponent(query)}`;
+function setupSearch() {
+    const input = document.getElementById("search-input");
+    const button = document.getElementById("search-btn");
+
+    function handleSearch() {
+        const query = input.value.trim();
+        if (query) {
+            window.location.href = `pokemon.html?search=${encodeURIComponent(query)}`;
+        }
     }
-});
+
+    button.addEventListener("click", handleSearch);
+    input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            handleSearch();
+        }
+    });
+}

@@ -1,9 +1,4 @@
 @media (min-width: 640px) {
-    body {
-        background: url('../images/wallpaper/poke-wpp1.avif') no-repeat center center;
-        background-size: cover;
-        background-attachment: fixed;
-    }
     /* Header and Nav */
     h1 {
         font-size: 2rem;
@@ -28,25 +23,31 @@
         grid-template-rows: 1fr;
     }
 
-    .search, .books-search {
+    .search {
         flex-direction: row;
         margin: 30px 0px;
     }
 
-    #search-input, #search-input-books {
+    #search-input {
         border: 2px solid rgba(0, 0, 0, 0.5);
         border-radius: 5px 0px 0px 5px;
     }
 
-    #search-btn, #search-btn-books {
+    #search-btn {
         margin: 0px;
         border: 2px solid rgba(0, 0, 0, 0);
         border-left: none;
         border-radius: 0px 5px 5px 0px;
     }
 
-    #review-form {
-        min-width: 500px;
+    /* POKEMON PAGE */
+    /* Filters */
+    .filters {
+        flex-direction: row;
+    }
+
+    .filter-flex {
+        margin: 0;
     }
 
     .card-reviews {
@@ -66,10 +67,21 @@
         flex-direction: column;
         gap: 10px;
     }
+
+    /* Modals */
+    .division-1 {
+        flex-direction: row;
+    }
+
+    .division-2 {
+        flex-direction: row;
+    }
+
+    #modal-image {
+        max-width: 300px;
+    }
 }
 
-
-/* Exclusive for Home Page */
 @media (max-width: 1257px) {
     .carousel-container {
         display: grid;
@@ -80,11 +92,35 @@
     #prevBtn, #nextBtn {
         display: none;
     }
+
+    .single-result {
+        grid-column: 1/4;
+    }
+
+    .not-found {
+        grid-column: 1/4;
+    }
+
+    #modal-image {
+        max-width: 270px;
+    }
 }
 
 @media (max-width: 820px) {
     .carousel-container {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .single-result {
+        grid-column: 1/3;
+    }
+
+    .not-found {
+        grid-column: 1/3;
+    }
+
+    #modal-image {
+        max-width: 220px;
     }
 }
 
@@ -104,6 +140,10 @@
     }
 
     .pokemon img {
-        height: 250px;
+        height: 300px;
+    }
+
+    #modal-image {
+        max-width: 180px;
     }
 }
