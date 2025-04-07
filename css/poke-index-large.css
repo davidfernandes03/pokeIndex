@@ -82,6 +82,10 @@
         max-width: 300px;
     }
 
+    .autocomplete-dropdown {
+        width: 48%;
+    }
+
     /* COMPARE PAGE */
     .vs-divider img {
         margin-top: 30px;
@@ -137,6 +141,10 @@
 
     #modal-image {
         max-width: 220px;
+    }
+
+    .autocomplete-dropdown {
+        width: 65%;
     }
 }
 

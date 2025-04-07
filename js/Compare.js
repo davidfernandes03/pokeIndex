@@ -1,5 +1,5 @@
 import { fetchPokemon, fetchPokemonSpecies, fetchAllPokemonNames } from "./api.js";
-import { capitalize, getSuggestions } from "./utils.js";
+import { capitalize, getSuggestions, normalizeSpeciesName } from "./utils.js";
 
 let pokemonData1 = null;
 let pokemonData2 = null;
@@ -79,20 +79,23 @@ document.getElementById("start-compare-btn").addEventListener("click", () => {
     highlightComparison(pokemonData1.stats, pokemonData2.stats);
 });
 
-function renderPokemon(pokemon, slot) {
+async function renderPokemon(pokemon, slot) {
     const pokemonContainer = document.getElementById(`pokemon-display-${slot}`);
     pokemonContainer.innerHTML = "";
 
     const { name, sprites, types } = pokemon;
-    const species = pokemon.species;
+    const normalizedName = normalizeSpeciesName(name);
+    const species = await fetchPokemonSpecies(normalizedName);
 
     const imageUrl = sprites.other["official-artwork"].front_default || "images/no-image.avif";
     const typeNames = types.map(t => t.type.name).join(", ");
-    const rarity = species.is_legendary
-        ? "Legendary"
-        : species.is_mythical
-        ? "Mythic"
-        : "Regular";
+    const rarity = species
+        ? species.is_legendary
+            ? "Legendary"
+            : species.is_mythical
+            ? "Mythic"
+            : "Regular"
+        : "Unknown";
     
     const statsHTML = pokemon.stats.map(stat => `
         <li data-stat="${stat.base_stat}">
@@ -101,7 +104,7 @@ function renderPokemon(pokemon, slot) {
     `).join("");
 
     const pokemonItem = document.createElement("div");
-        pokemonItem.classList.add("pokemon", "single-result");
+    pokemonItem.classList.add("pokemon", "single-result");
 
     pokemonItem.innerHTML = `
         <img src="${imageUrl}" alt="${name}" loading="lazy">
@@ -112,7 +115,7 @@ function renderPokemon(pokemon, slot) {
     `;
 
     pokemonContainer.appendChild(pokemonItem);
-}
+} 
 
 function highlightComparison(stats1, stats2) {
     const list1 = document.querySelectorAll("#pokemon-display-1 .stat-list li");
@@ -138,14 +141,55 @@ function highlightComparison(stats1, stats2) {
     });
 }
 
-// For autocomplete
-let allNames = [];
+function setupAutocomplete(input) {
+    let allNames = [];
 
-fetchAllPokemonNames().then(names => {
-    allNames = names;
-});
+    fetchAllPokemonNames().then(names => {
+        allNames = names;
+    });
 
-input.addEventListener("input", () => {
-    const suggestions = getSuggestions(input.value, allNames);
-    showSuggestionsDropdown(suggestions);
+    input.addEventListener("input", () => {
+        const suggestions = getSuggestions(input.value, allNames);
+        showSuggestionsDropdown(suggestions, input);
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest(".autocomplete-dropdown") && !e.target.classList.contains("search-input")) {
+            removeSuggestionsDropdown();
+        }
+    });
+}
+
+function showSuggestionsDropdown(suggestions, inputElement) {
+    removeSuggestionsDropdown();
+
+    if (suggestions.length === 0) return;
+
+    const dropdown = document.createElement("ul");
+    dropdown.classList.add("autocomplete-dropdown");
+
+    suggestions.forEach(name => {
+        const item = document.createElement("li");
+        item.classList.add("suggestion-item");
+        item.textContent = name;
+
+        item.addEventListener("click", () => {
+            inputElement.value = name;
+            removeSuggestionsDropdown();
+        });
+
+        dropdown.appendChild(item);
+    });
+
+    inputElement.parentNode.appendChild(dropdown);
+}
+
+function removeSuggestionsDropdown() {
+    const existing = document.querySelector(".autocomplete-dropdown");
+    if (existing) existing.remove();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputs = document.querySelectorAll(".search-input");
+    inputs.forEach(input => setupAutocomplete(input));
 });

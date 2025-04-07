@@ -6,7 +6,7 @@ export async function fetchPokemon(query) {
     }
 
     try {
-        const response = await fetch(`${baseURL}/pokemon/${query.toLowerCase()}`);
+        const response = await fetch(`${baseURL}pokemon/${query.toLowerCase()}`);
         if (!response.ok) throw new Error("Pokémon not found!");
         return await response.json();
     } catch (error) {
@@ -32,7 +32,7 @@ export async function fetchRandomPokemon(amount = 10) {
 
 export async function fetchPokemonsByType(type) {
     try {
-        const response = await fetch(`${baseURL}/type/${type}`);
+        const response = await fetch(`${baseURL}type/${type}`);
         const data = await response.json();
 
         const promises = data.pokemon.slice(0, 20).map(p => fetchPokemon(p.pokemon.name));
@@ -47,7 +47,7 @@ export async function fetchPokemonsByType(type) {
 
 export async function fetchPokemonsByGeneration(generation) {
     try {
-        const response = await fetch(`${baseURL}/generation/${generation}`);
+        const response = await fetch(`${baseURL}generation/${generation}`);
         const data = await response.json();
 
         const promises = data.pokemon_species.slice(0, 20).map(species => fetchPokemon(species.name));
@@ -66,7 +66,7 @@ export async function fetchPokemonSpecies(query) {
     }
 
     try {
-        const response = await fetch(`${baseURL}/pokemon-species/${query.toLowerCase()}`);
+        const response = await fetch(`${baseURL}pokemon-species/${query.toLowerCase()}`);
         if (!response.ok) throw new Error("Species not found!");
         return await response.json();
     } catch (error) {
@@ -76,7 +76,7 @@ export async function fetchPokemonSpecies(query) {
 }
 
 export async function fetchAllPokemonNames() {
-    const response = await fetch(`${baseURL}/pokemon/limit=100000&offset=0`);
+    const response = await fetch(`${baseURL}pokemon?limit=100000&offset=0`);
     const data = await response.json();
     return data.results.map(p => p.name);
 }

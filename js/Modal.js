@@ -25,7 +25,7 @@ export async function openPokemonModal(pokemon) {
 
     modalTitle.textContent = capitalize(pokemon.name);
 
-    modalTypes.innerHTML = `<strong>Types:</strong> ${pokemon.types.map(t => t.type.name).join(", ").toUpperCase()}`;
+    modalTypes.innerHTML = `<strong>Type:</strong> ${pokemon.types.map(t => t.type.name).join(", ").toUpperCase()}`;
 
     modalHeightWeight.innerHTML = `<strong>Height:</strong> ${pokemon.height / 10} m &nbsp;&nbsp; <strong>Weight:</strong> ${pokemon.weight / 10} kg`;
 

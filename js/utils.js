@@ -18,3 +18,11 @@ export function getSuggestions(query, names, limit = 5) {
         .filter(name => name.toLowerCase().startsWith(query.toLowerCase()))
         .slice(0, limit);
 }
+
+export function normalizeSpeciesName(name) {
+    return name
+        .replace(/-mega(-[xy])?/, "")
+        .replace(/-gmax/, "")
+        .replace(/-alola|-galar|-hisui|-paldea/, "")
+        .replace(/-.*$/, "");
+}
