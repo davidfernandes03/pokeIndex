@@ -74,3 +74,9 @@ export async function fetchPokemonSpecies(query) {
         return null;
     }
 }
+
+export async function fetchAllPokemonNames() {
+    const response = await fetch(`${baseURL}/pokemon/limit=100000&offset=0`);
+    const data = await response.json();
+    return data.results.map(p => p.name);
+}

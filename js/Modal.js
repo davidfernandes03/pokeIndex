@@ -1,4 +1,5 @@
 import { fetchPokemonSpecies } from "./api.js";
+import { capitalize } from "./utils.js";
 
 export async function openPokemonModal(pokemon) {
     const modal = document.getElementById("pokemon-modal");
@@ -53,8 +54,4 @@ export async function openPokemonModal(pokemon) {
     document.querySelector(".close-modal").addEventListener("click", () => {
         modal.close();
     });
-}
-
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
 }

@@ -38,9 +38,9 @@
 
     <nav id="animation">
         <ul class="menuLinks">
-            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="pokemon.html">Pokémon</a></li>
-            <li><a href="compare.html">Compare</a></li>
+            <li class="active"><a href="compare.html">Compare</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="trivia.html">Trivia</a></li>
         </ul>
@@ -48,36 +48,36 @@
 
     <main>
         <section class="hero">
-            <h2>Welcome to PokeIndex</h2>
-            <p>Explore the vast world of Pokémon! Discover stats, abilities, evolutions, and more.</p>
+            <h2>Pokémon Showdown</h2>
+            <p>Choose two Pokémon and compare their stats, types, and rarity side by side.</p>
         </section>
-
-        <section class="search">
-            <input type="text" class="search-input" placeholder="Search for Pokémon...">
-            <button class="search-btn">Search</button>
-        </section>
-
-        <section class="introduction">
-            <h2>What is PokeIndex?</h2>
-            <p>PokeIndex is the ultimate Pokémon database for fans and trainers! Whether you're a newcomer or a seasoned expert, you can:</p>
-            <ul>
-                <li>🔎 Search Pokémons and learn about their abilities, evolutions, and stats.</li>
-                <li class="zebra">⚔️ Compare Pokémon to see which ones are the best for battles.</li>
-                <li>🧭 Explore a visual gallery filled with Pokémon images and animations.</li>
-                <li class="zebra">🤓 Test your knowledge with fun Pokémon trivia!</li>
-            </ul>
-            
-            <p class="ppp"><strong>Get ready to catch 'em all!</strong></p>
-        </section>
-
-        <section class="featured">
-            <h2>🔥 Featured Pokémon 🔥</h2>
-            <div class="carousel">
-                <button id="prevBtn">◀</button>
-                <div class="carousel-container" id="pokemon-list"></div>
-                <button id="nextBtn">▶</button>
+        <section class="featured comp-hero">
+            <div class="compare-container">
+              <!-- Pokémon 1 -->
+                <div class="compare-card">
+                    <section class="search">
+                        <input type="text" class="search-input" placeholder="Search for Pokémon...">
+                        <button class="search-btn">Search</button>
+                    </section>
+                    <div class="carousel-container" id="pokemon-display-1"></div>
+                </div>
+      
+                <!-- VS Divider -->
+                <div class="vs-divider">
+                    <img src="images/decoration/vs.avif" alt="VS Image">
+                    <button id="start-compare-btn">Compare</button>
+                </div>
+      
+                <!-- Pokémon 2 -->
+                <div class="compare-card">
+                    <section class="search">
+                        <input type="text" class="search-input" placeholder="Search for Pokémon...">
+                        <button class="search-btn">Search</button>
+                    </section>
+                    <div class="carousel-container" id="pokemon-display-2"></div>
+                </div>
             </div>
-        </section>
+          </section>
     </main>
     
     <footer>
@@ -87,6 +87,6 @@
     </footer>
 
     <script src="js/general.js" defer></script>
-    <script type="module" src="js/Home.js"></script>
+    <script type="module" src="js/Compare.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 import { fetchRandomPokemon } from "./api.js";
+import { setupCarousel } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchRandomPokemon(10).then(displayPokemon);
@@ -30,19 +31,9 @@ function displayPokemon(pokemonList) {
     setupCarousel();
 }
 
-function setupCarousel() {
-    const container = document.querySelector(".carousel-container");
-    document.getElementById("prevBtn").addEventListener("click", () => {
-        container.scrollLeft -= 300;
-    });
-    document.getElementById("nextBtn").addEventListener("click", () => {
-        container.scrollLeft += 300;
-    });
-}
-
 function setupSearch() {
-    const input = document.getElementById("search-input");
-    const button = document.getElementById("search-btn");
+    const input = document.querySelector(".search-input");
+    const button = document.querySelector(".search-btn");
 
     function handleSearch() {
         const query = input.value.trim();

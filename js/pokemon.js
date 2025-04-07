@@ -1,17 +1,13 @@
 import { openPokemonModal } from "./Modal.js";
-import { 
-    fetchPokemon, 
-    fetchRandomPokemon, 
-    fetchPokemonsByType,
-    fetchPokemonsByGeneration
-} from "./api.js";
+import { setupCarousel, getSuggestions } from "./utils.js";
+import { fetchPokemon, fetchRandomPokemon, fetchPokemonsByType, fetchPokemonsByGeneration, fetchAllPokemonNames } from "./api.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const searchQuery = params.get("search");
 
     if (searchQuery) {
-        document.getElementById("search-input").value = searchQuery;
+        document.querySelector(".search-input").value = searchQuery;
         fetchPokemon(searchQuery.toLowerCase()).then(pokemon => {
             const result = pokemon ? [pokemon] : [];
             displayPokemon(result);
@@ -68,9 +64,27 @@ function displayPokemon(pokemonList) {
     setupCarousel();
 }
 
+function setupFilters() {
+    document.getElementById("filter-type").addEventListener("change", async (e) => {
+        const type = e.target.value;
+        if (!type) return;
+
+        const pokemons = await fetchPokemonsByType(type);
+        displayPokemon(pokemons);
+    });
+
+    document.getElementById("filter-generation").addEventListener("change", async (e) => {
+        const generation = e.target.value;
+        if (!generation) return;
+
+        const pokemons = await fetchPokemonsByGeneration(generation);
+        displayPokemon(pokemons);
+    });
+}
+
 function setupSearch() {
-    const input = document.getElementById("search-input");
-    const button = document.getElementById("search-btn");
+    const input = document.querySelector(".search-input");
+    const button = document.querySelector(".search-btn");
 
     function handleSearch() {
         const query = input.value.trim();
@@ -93,30 +107,20 @@ function setupSearch() {
     });
 }
 
-function setupFilters() {
-    document.getElementById("filter-type").addEventListener("change", async (e) => {
-        const type = e.target.value;
-        if (!type) return;
+// For autocomplete
+let allNames = [];
 
-        const pokemons = await fetchPokemonsByType(type);
-        displayPokemon(pokemons);
-    });
+fetchAllPokemonNames().then(names => {
+    allNames = names;
+});
 
-    document.getElementById("filter-generation").addEventListener("change", async (e) => {
-        const generation = e.target.value;
-        if (!generation) return;
+input.addEventListener("input", () => {
+    const suggestions = getSuggestions(input.value, allNames);
+    showSuggestionsDropdown(suggestions);
+});
 
-        const pokemons = await fetchPokemonsByGeneration(generation);
-        displayPokemon(pokemons);
-    });
-}
-
-function setupCarousel() {
-    const container = document.querySelector(".carousel-container");
-    document.getElementById("prevBtn").addEventListener("click", () => {
-        container.scrollLeft -= 300;
-    });
-    document.getElementById("nextBtn").addEventListener("click", () => {
-        container.scrollLeft += 300;
-    });
-}
+document.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("suggestion-item")) {
+        removeSuggestionsDropdown();
+    }
+});

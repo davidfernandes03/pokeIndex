@@ -117,7 +117,7 @@ h2 {
     gap: 0;
 }
 
-#search-input {
+.search-input {
     padding: 0.5rem;
     width: 100%;
     max-width: 250px;
@@ -126,7 +126,7 @@ h2 {
     border-radius: 5px;
 }
 
-#search-btn, .see-more, .close-modal {
+.search-btn, .see-more, .close-modal, #start-compare-btn {
     color: white;
     border: none;
     cursor: pointer;
@@ -137,7 +137,7 @@ h2 {
     background: var(--button);
 }
 
-button:hover, #search-btn:hover, .close-modal:hover {
+button:hover, .search-btn:hover, .close-modal:hover, #start-compare-btn:hover {
     background-color: var(--hover);
 }
 
@@ -190,6 +190,10 @@ button:hover, #search-btn:hover, .close-modal:hover {
     padding: 5px;
     border-radius: 10px;
     background-color: var(--active);
+}
+
+.carousel-container {
+    justify-items: center;
 }
 
 #prevBtn { margin: 0px 10px 0px 0px; border-radius: 20px; }
@@ -333,7 +337,7 @@ button:hover, #search-btn:hover, .close-modal:hover {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-#modal-stats ul {
+#modal-stats ul, .stat-list {
     list-style-type: none;
     padding: 0;
 }
@@ -355,6 +359,56 @@ button:hover, #search-btn:hover, .close-modal:hover {
         opacity: 1;
     }
 }
+
+
+/* COMPARE PAGE */
+.comp-hero {
+    padding-top: 20px;
+}
+
+.compare-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.compare-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.compare-card .carousel-container {
+    display: block;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.vs-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pokemon-display-1 { background-color: rgba(252, 67, 61, 0.24); }
+#pokemon-display-2 { background-color: rgba(5, 119, 212, 0.24); }
+
+#start-compare-btn.disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.stat-list li {
+    padding: 2px;
+}
+
+.stat-higher { background-color: rgba(0, 202, 0, 0.61); }
+.stat-higher::after { content: "↑"; }
+.stat-lower { background-color: rgba(255, 0, 0, 0.61); }
+.stat-lower::after { content: "↓"; }
+.stat-equal { background-color: rgba(255, 255, 0, 0.61); }
+.stat-equal::after { content: "="; }
 
 /* Footer Styles */
 footer {
