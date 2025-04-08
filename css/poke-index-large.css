@@ -99,6 +99,10 @@
     .image-layout {
         grid-template-columns: 1fr 1fr;
     }
+
+    .quiz-start-buttons {
+        flex-direction: row;
+    }
 }
 
 @media (min-width: 800px) {

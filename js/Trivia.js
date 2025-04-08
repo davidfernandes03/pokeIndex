@@ -1,5 +1,7 @@
 import { fetchPokemon } from "./api.js";
 
+const triviaContainer = document.querySelector(".trivia-container");
+const startButtons = document.querySelectorAll(".start-btn");
 const questionText = document.getElementById("question-text");
 const optionsList = document.getElementById("options-list");
 const nextBtn = document.getElementById("next-btn");
@@ -11,14 +13,14 @@ const finalScoreEl = document.getElementById("final-score");
 const restartBtn = document.getElementById("restart-btn");
 
 let questions = [];
+let allQuestions = [];
 let currentQuestion = 0;
 let score = 0;
 let quizComplete = false;
 let hasAnswered = false;
 
 fetch("json/trivia.json").then(res => res.json()).then(data => {
-    questions = data;
-    loadQuestion();
+    allQuestions = data;
 });
 
 function loadQuestion() {
@@ -65,10 +67,16 @@ function loadQuestion() {
                 ));
                 optionsList.appendChild(li);
             } else {
-                console.error(`Imagem de ${pokemon.name} não pôde ser carregada.`);
+                console.error(`Image of ${pokemon.name} can't be loaded.`);
             }
         });
     }
+
+    if (currentQuestion === questions.length - 1) {
+        nextBtn.textContent = 'Finish';
+    } else {
+        nextBtn.textContent = 'Next';
+    };
 }
 
 function handleAnswer(selected, correct, element) {
@@ -97,6 +105,28 @@ function handleAnswer(selected, correct, element) {
     nextBtn.classList.remove("disabled");
 }
 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+startButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const count = parseInt(btn.dataset.count);
+        questions = shuffleArray([...allQuestions]).slice(0, count);
+        currentQuestion = 0;
+        score = 0;
+        quizComplete = false;
+        resultBox.classList.add("hidden");
+        document.querySelector(".quiz-start").classList.add("hidden");
+        triviaContainer.classList.remove("hidden");
+        loadQuestion();
+    });
+});
+
 nextBtn.addEventListener("click", () => {
     currentQuestion++;
     if (currentQuestion >= questions.length) {
@@ -108,6 +138,8 @@ nextBtn.addEventListener("click", () => {
 
 restartBtn.addEventListener("click", () => {
     resultBox.classList.add("hidden");
+    triviaContainer.classList.add("hidden");
+    document.querySelector(".quiz-start").classList.remove("hidden");
     currentQuestion = 0;
     score = 0;
     quizComplete = false;
