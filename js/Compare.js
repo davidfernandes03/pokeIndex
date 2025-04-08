@@ -1,5 +1,5 @@
-import { fetchPokemon, fetchPokemonSpecies, fetchAllPokemonNames } from "./api.js";
-import { capitalize, getSuggestions, normalizeSpeciesName } from "./utils.js";
+import { fetchPokemon, fetchPokemonSpecies } from "./api.js";
+import { capitalize, normalizeSpeciesName, setupAutocomplete } from "./utils.js";
 
 let pokemonData1 = null;
 let pokemonData2 = null;
@@ -141,54 +141,7 @@ function highlightComparison(stats1, stats2) {
     });
 }
 
-function setupAutocomplete(input) {
-    let allNames = [];
-
-    fetchAllPokemonNames().then(names => {
-        allNames = names;
-    });
-
-    input.addEventListener("input", () => {
-        const suggestions = getSuggestions(input.value, allNames);
-        showSuggestionsDropdown(suggestions, input);
-    });
-
-    document.addEventListener("click", (e) => {
-        if (!e.target.closest(".autocomplete-dropdown") && !e.target.classList.contains("search-input")) {
-            removeSuggestionsDropdown();
-        }
-    });
-}
-
-function showSuggestionsDropdown(suggestions, inputElement) {
-    removeSuggestionsDropdown();
-
-    if (suggestions.length === 0) return;
-
-    const dropdown = document.createElement("ul");
-    dropdown.classList.add("autocomplete-dropdown");
-
-    suggestions.forEach(name => {
-        const item = document.createElement("li");
-        item.classList.add("suggestion-item");
-        item.textContent = name;
-
-        item.addEventListener("click", () => {
-            inputElement.value = name;
-            removeSuggestionsDropdown();
-        });
-
-        dropdown.appendChild(item);
-    });
-
-    inputElement.parentNode.appendChild(dropdown);
-}
-
-function removeSuggestionsDropdown() {
-    const existing = document.querySelector(".autocomplete-dropdown");
-    if (existing) existing.remove();
-}
-
+// Autocomplete
 document.addEventListener("DOMContentLoaded", () => {
     const inputs = document.querySelectorAll(".search-input");
     inputs.forEach(input => setupAutocomplete(input));

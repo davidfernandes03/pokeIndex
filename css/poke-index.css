@@ -126,7 +126,7 @@ h2 {
     border-radius: 5px;
 }
 
-.search-btn, .see-more, .close-modal, #start-compare-btn {
+.search-btn, .see-more, .close-modal, #start-compare-btn, #restart-btn, #next-btn {
     color: white;
     border: none;
     cursor: pointer;
@@ -137,7 +137,7 @@ h2 {
     background: var(--button);
 }
 
-button:hover, .search-btn:hover, .close-modal:hover, #start-compare-btn:hover {
+button:hover, .search-btn:hover, .close-modal:hover, #start-compare-btn:hover, #restart-btn:hover, #next-btn:hover {
     background-color: var(--hover);
 }
 
@@ -337,7 +337,7 @@ button:hover, .search-btn:hover, .close-modal:hover, #start-compare-btn:hover {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-#modal-stats ul, .stat-list {
+#modal-stats ul, .stat-list, .options-list {
     list-style-type: none;
     padding: 0;
 }
@@ -423,23 +423,88 @@ button:hover, .search-btn:hover, .close-modal:hover, #start-compare-btn:hover {
 #pokemon-display-1 { background-color: rgba(252, 67, 61, 0.24); }
 #pokemon-display-2 { background-color: rgba(5, 119, 212, 0.24); }
 
-#start-compare-btn.disabled {
+#start-compare-btn.disabled, #next-btn.disabled {
     background-color: #ccc;
     color: #666;
     cursor: not-allowed;
     pointer-events: none;
 }
 
-.stat-list li {
-    padding: 2px;
-}
-
+.stat-list li { padding: 2px; }
 .stat-higher { background-color: rgba(0, 202, 0, 0.61); }
 .stat-higher::after { content: "↑"; }
 .stat-lower { background-color: rgba(255, 0, 0, 0.61); }
 .stat-lower::after { content: "↓"; }
 .stat-equal { background-color: rgba(255, 255, 0, 0.61); }
 .stat-equal::after { content: "="; }
+
+/* TRIVIA PAGE */
+.trivia-container { padding: 10px; }
+#question-text { margin: 20px 0; }
+
+.quiz-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--active);
+}
+
+.options-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.options-list li {
+    padding: 10px;
+    background: #e9e9e9;
+    border: 2px solid rgba(0, 0, 0, 0.205);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.options-list li:hover {
+    background: #cacaca;
+}
+
+.image-layout {
+    justify-items: center;
+}
+
+.image-option {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    min-width: 200px;
+}
+
+.image-option img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#next-btn {
+    max-width: 200px;
+    width: 200px;
+    border: 2px solid rgba(255, 255, 255, 0.664);
+}
+
+.feedback {
+    margin: 10px 0;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--active);
+}
+
+.hidden {
+    display: none;
+}
 
 /* Footer Styles */
 footer {

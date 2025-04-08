@@ -94,6 +94,11 @@
     .compare-card .search {
         margin: 0 0 30px 0;
     }
+
+    /* TRIVIA PAGE */
+    .image-layout {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media (min-width: 800px) {

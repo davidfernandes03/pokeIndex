@@ -1,0 +1,132 @@
+[
+    {
+        "type": "image-true-false",
+        "question": "Who is Pikachu?",
+        "images": [
+            { "name": "pikachu" },
+            { "name": "mimikyu-disguised" }
+        ],
+        "answer": "Pikachu"
+    },
+    {
+        "type": "image-true-false",
+        "question": "Who is Dragonite?",
+        "images": [
+            { "name": "charizard" },
+            { "name": "dragonite" }
+        ],
+        "answer": "dragonite"
+    },
+    {
+        "type": "image-true-false",
+        "question": "Which one is Mewtwo Mega X?",
+        "images": [
+            { "name": "mewtwo-mega-x" },
+            { "name": "mewtwo-mega-y" }
+        ],
+        "answer": "mewtwo-mega-x"
+    },
+    {
+        "type": "multiple",
+        "question": "Which Pokémon is known as the 'Sleeping Pokémon'?",
+        "options": ["Jigglypuff", "Slowpoke", "Snorlax", "Slakoth"],
+        "answer": "Snorlax"
+    },
+    {
+        "type": "multiple",
+        "question": "Which type is super effective against Dragon?",
+        "options": ["Fire", "Normal", "Poison", "Fairy"],
+        "answer": "Fairy"
+    },
+    {
+        "type": "multiple",
+        "question": "Which Pokémon evolves into Charizard?",
+        "options": ["Charmander", "Charmeleon", "Chimchar", "Charcadet"],
+        "answer": "Charmeleon"
+    },
+    {
+        "type": "multiple",
+        "question": "What is the first Pokémon in the Pokédex?",
+        "options": ["Bulbasaur", "Pikachu", "Rattata", "Mew"],
+        "answer": "Bulbasaur"
+    },
+    {
+        "type": "multiple",
+        "question": "Which type combination is unique to Lucario?",
+        "options": ["Fighting/Steel", "Steel/Dark", "Fighting/Psychic", "Fighting/Fairy"],
+        "answer": "Fighting/Steel"
+    },
+    {
+        "type": "multiple",
+        "question": "Which item is required to evolve Eevee into Espeon?",
+        "options": ["Moon Stone", "High Friendship (Day)", "Thunder Stone", "Leaf Stone"],
+        "answer": "High Friendship (Day)"
+    },
+    {
+        "type": "multiple",
+        "question": "Which Pokémon is not part of the Eevee evolution line?",
+        "options": ["Leafeon", "Glaceon", "Sylveon", "Luxray"],
+        "answer": "Luxray"
+    },
+    {
+        "type": "multiple",
+        "question": "Which of these is NOT a Legendary Pokémon?",
+        "options": ["Articuno", "Zapdos", "Delibird", "Moltres"],
+        "answer": "Delibird"
+    },
+    {
+        "type": "multiple",
+        "question": "What type is immune to Electric-type attacks?",
+        "options": ["Rock", "Ground", "Steel", "Ghost"],
+        "answer": "Ground"  
+    },
+    {
+        "type": "multiple",
+        "question": "Which of these Pokémon is based on a fox?",
+        "options": ["Poochyena", "Growlithe", "Vulpix", "Meowth"],
+        "answer": "Vulpix"
+    },
+    {
+        "type": "multiple",
+        "question": "Which Pokémon can only evolve during the night with high friendship?",
+        "options": ["Espeon", "Glaceon", "Umbreon", "Sylveon"],
+        "answer": "Umbreon"
+    },
+    {
+        "type": "multiple",
+        "question": "Which Pokémon is known for mimicking Pikachu?",
+        "options": ["Mimikyu", "Ditto", "Plusle", "Togepi"],
+        "answer": "Mimikyu"
+    },
+    {
+        "type": "multiple",
+        "question": "Which of these Pokémon evolves by trading?",
+        "options": ["Haunter", "Zubat", "Machop", "Onix"],
+        "answer": "Haunter"
+    },
+    {
+        "type": "multiple",
+        "question": "Which Pokémon was the mascot of Pokémon Yellow?",
+        "options": ["Charmander", "Eevee", "Squirtle", "Pikachu"],
+        "answer": "Pikachu"
+    },
+    {
+        "type": "multiple",
+        "question": "Which Pokémon is part Ice-type?",
+        "options": ["Vaporeon", "Glaceon", "Flareon", "Leafeon"],
+        "answer": "Glaceon"
+    },
+    {
+        "type": "multiple",
+        "question": "Which move can cause a Pokémon to fall asleep?",
+        "options": ["Tackle", "Ember", "Hypnosis", "Growl"],
+        "answer": "Hypnosis"
+    },
+    {
+        "type": "multiple",
+        "question": "Which of these is a Fossil Pokémon?",
+        "options": ["Zubat", "Magikarp", "Machoke", "Kabuto"],
+        "answer": "Kabuto"
+    }
+]
+  
