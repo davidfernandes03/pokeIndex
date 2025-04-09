@@ -1,5 +1,6 @@
 :root {
-    --primary: #5ba324c5;
+    --teste: #5ba324c5;
+    --primary: #72ca2fbd;
     --active: #5ba3244b;
     --nav-hover: #5ba32498;
     --button: #9c1d1d;
@@ -126,7 +127,7 @@ h2 {
     border-radius: 5px;
 }
 
-.search-btn, .see-more, .close-modal, #start-compare-btn, #restart-btn, #next-btn, .start-btn {
+.search-btn, .see-more, .close-modal, #start-compare-btn, #restart-btn, #next-btn, .start-btn, #favorite-btn, .go-favorite-btn {
     color: white;
     border: none;
     cursor: pointer;
@@ -137,11 +138,11 @@ h2 {
     background: var(--button);
 }
 
-button:hover, .search-btn:hover, .close-modal:hover, #start-compare-btn:hover, #restart-btn:hover, #next-btn:hover, .start-btn:hover {
+button:hover, .search-btn:hover, .close-modal:hover, #start-compare-btn:hover, #restart-btn:hover, #next-btn:hover, .start-btn:hover, .go-favorite-btn:hover {
     background-color: var(--hover);
 }
 
-.close-modal {
+.close-modal, #favorite-btn {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
 }
@@ -351,6 +352,28 @@ button:hover, .search-btn:hover, .close-modal:hover, #start-compare-btn:hover, #
     margin: 5px 0;
 }
 
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#favorite-btn.fav-btn-add { 
+    background-color: #7CE12F;
+    color: var(--text);
+}
+#favorite-btn.fav-btn-add:hover { 
+    background-color: #7ce12fc7; 
+}
+
+#favorite-btn.fav-btn-remove {
+    background-color: #FFB820;
+    color: var(--text);
+}
+#favorite-btn.fav-btn-remove:hover {
+    background-color: #ffb820b7;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -390,7 +413,6 @@ button:hover, .search-btn:hover, .close-modal:hover, #start-compare-btn:hover, #
 .suggestion-item:hover {
     background-color: #f2f2f2;
 }
-
 
 /* COMPARE PAGE */
 .comp-hero {
@@ -525,8 +547,29 @@ button:hover, .search-btn:hover, .close-modal:hover, #start-compare-btn:hover, #
     display: none;
 }
 
+/* FAVORITES PAGE */
+.favorite-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.go-favorite-btn {
+    font-family: var(--font-title);
+    width: 300px;
+    max-width: 250px;
+    background-image: linear-gradient(to right, #7CE12F,  #FFB820);
+    color: var(--text);
+}
+
+.go-favorite-btn:hover {
+    background-image: linear-gradient(to right, #7ce12fce,  #ffb820d0);
+}
+
+
 /* Footer Styles */
 footer {
+    font-family: var(--font-title);
     text-align: center;
     padding: 10px;
     background-color: var(--primary);
